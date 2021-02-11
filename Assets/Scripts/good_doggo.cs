@@ -6,20 +6,24 @@ public class good_doggo : MonoBehaviour
 {
     public float speed;
     private Animator anim;
-    public int framecount = 19;
+    private int framecount = 19;
+    private Rigidbody body;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        body = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return)) {
-            transform.Translate(speed*Vector3.forward, Space.World);
             transform.position = new Vector3(-6, 2, -6);
+            transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+            body.velocity = Vector3.zero;
+            body.angularVelocity = Vector3.zero;
         }
         
         if (Input.GetKey(KeyCode.Z)) {
